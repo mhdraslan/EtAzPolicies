@@ -1,0 +1,56 @@
+{
+ "properties": {
+  "displayName": "Allowed ExpressRoute Gateway SKUs",
+  "policyType": "Custom",
+  "mode": "All",
+  "metadata": {
+   "category": "Network",
+   "createdBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "createdOn": "2022-01-16T20:20:52.1979395Z",
+   "updatedBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "updatedOn": "2022-01-17T08:49:59.4576107Z"
+  },
+  "parameters": {
+   "listOfAllowedSKUs": {
+    "type": "Array",
+    "metadata": {
+     "displayName": "Allowed ExpressRoute Gateway SKUs",
+     "description": "The list of allowed SKUs that can be specified for ExpressRoute gateways."
+    },
+    "allowedValues": [
+     "Standard",
+     "HighPerformance",
+     "UltraPerformance",
+     "ErGw1AZ",
+     "ErGw2AZ",
+     "ErGw3AZ"
+    ],
+    "defaultValue": [
+     "Standard"
+    ]
+   }
+  },
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "type",
+      "equals": "Microsoft.Network/virtualNetworkGateways"
+     },
+     {
+      "not": {
+       "field": "Microsoft.Network/virtualNetworkGateways/sku.name",
+       "in": "[parameters('listOfAllowedSKUs')]"
+      }
+     }
+    ]
+   },
+   "then": {
+    "effect": "deny"
+   }
+  }
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policyDefinitions/29d740ae-53ff-48a0-9c11-ca734258bea6",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "29d740ae-53ff-48a0-9c11-ca734258bea6"
+}
