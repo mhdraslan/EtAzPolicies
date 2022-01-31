@@ -1,0 +1,63 @@
+{
+ "properties": {
+  "displayName": "Apply Lock on Resource Group",
+  "policyType": "Custom",
+  "mode": "All",
+  "metadata": {
+   "category": "Operations",
+   "createdBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "createdOn": "2022-01-16T11:27:17.4011887Z",
+   "updatedBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "updatedOn": "2022-01-16T15:58:26.2251681Z"
+  },
+  "parameters": {},
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "type",
+      "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+     }
+    ]
+   },
+   "then": {
+    "effect": "deployIfNotExists",
+    "details": {
+     "type": "Microsoft.Authorization/locks",
+     "existenceCondition": {
+      "field": "Microsoft.Authorization/locks/level",
+      "equals": "CanNotDelete"
+     },
+     "deployment": {
+      "properties": {
+       "mode": "Incremental",
+       "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {},
+        "resources": [
+         {
+          "type": "Microsoft.Authorization/locks",
+          "apiVersion": "2016-09-01",
+          "name": "rgLock",
+          "properties": {
+           "level": "CanNotDelete",
+           "notes": "Resource group should not be deleted."
+          }
+         }
+        ]
+       }
+      }
+     },
+     "roleDefinitionIds": [
+      "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+      "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9"
+     ]
+    }
+   }
+  }
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policyDefinitions/a1847193-a8e0-4ab1-aeb3-88cb1f03c2bf",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "a1847193-a8e0-4ab1-aeb3-88cb1f03c2bf"
+}
