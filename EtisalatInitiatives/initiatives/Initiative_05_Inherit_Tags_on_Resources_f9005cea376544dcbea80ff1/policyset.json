@@ -1,0 +1,57 @@
+{
+ "properties": {
+  "displayName": "Initiative 05: Inherit Tags on Resources",
+  "policyType": "Custom",
+  "description": "",
+  "metadata": {
+   "category": "Tags",
+   "createdBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "createdOn": "2022-01-14T08:41:13.4156002Z",
+   "updatedBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "updatedOn": "2022-01-14T08:45:41.0728338Z",
+   "version": "1.0"
+  },
+  "parameters": {
+   "inheritTagFromResourceGroupTagName": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Inherit a tag from the resource group Tag Name",
+     "description": null
+    }
+   },
+   "inheritTagFromResourceGroupIfMissngTagName": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Inherit a tag from the resource group if missing Tag Name",
+     "description": null
+    }
+   }
+  },
+  "policyDefinitions": [
+   {
+    "policyDefinitionReferenceId": "Inherit a tag from the resource group_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/cd3aa116-8754-49c9-a813-ad46512ece54",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('inheritTagFromResourceGroupTagName')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Inherit a tag from the resource group if missing_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('inheritTagFromResourceGroupIfMissngTagName')]"
+     }
+    },
+    "groupNames": []
+   }
+  ],
+  "policyDefinitionGroups": []
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policySetDefinitions/f9005cea376544dcbea80ff1",
+ "type": "Microsoft.Authorization/policySetDefinitions",
+ "name": "f9005cea376544dcbea80ff1"
+}

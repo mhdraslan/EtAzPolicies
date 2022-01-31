@@ -1,0 +1,286 @@
+{
+ "properties": {
+  "displayName": "Initiative 11: AKS Related Configurations",
+  "policyType": "Custom",
+  "description": "",
+  "metadata": {
+   "createdBy": "cff858ae-b6db-464f-ad88-38527b3fda0f",
+   "createdOn": "2022-01-12T13:38:26.4665053Z",
+   "updatedBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "updatedOn": "2022-01-13T19:07:26.5655435Z",
+   "category": "Operations",
+   "version": "1.0"
+  },
+  "parameters": {
+   "deployAksClustersAzurePolicyAddonEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Deploy AKS Clusters Azure Policy Add-On Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "DeployIfNotExists",
+     "Disabled"
+    ],
+    "defaultValue": "DeployIfNotExists"
+   },
+   "aksClustersIlbEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "AKS Clusters Should Use iLB Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "audit",
+     "deny",
+     "disabled"
+    ],
+    "defaultValue": "audit"
+   },
+   "aksClustersIlbNamespaceExclusions": {
+    "type": "array",
+    "metadata": {
+     "displayName": "AKS Clusters Should Use iLB Policy Namespace Exclusions",
+     "description": null
+    },
+    "defaultValue": [
+     "kube-system",
+     "gatekeeper-system",
+     "azure-arc"
+    ]
+   },
+   "aksClustersIlbLabelSelector": {
+    "type": "object",
+    "metadata": {
+     "displayName": "AKS Clusters Should Use iLB Policy Label Selector",
+     "description": null
+    },
+    "defaultValue": {}
+   },
+   "aksClustersIlbNamespaceInclusions": {
+    "type": "array",
+    "metadata": {
+     "displayName": "AKS Clusters Should Use iLB Policy Namespace Inclusions",
+     "description": null
+    },
+    "defaultValue": []
+   },
+   "rbacShouldBeUsedAksEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "RBAC Should Be Used On Kubernetes Services Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "Audit",
+     "Disabled"
+    ],
+    "defaultValue": "Audit"
+   },
+   "aksClustersNoAllowContainerPrivilegeEscalationNamespaceExclusions": {
+    "type": "array",
+    "metadata": {
+     "displayName": "AKS Clusters Should Not Allow Container Privilege Escalation Policy Namespace Exclusions",
+     "description": null
+    },
+    "defaultValue": []
+   },
+   "aksClustersNoAllowContainerPrivilegeEscalationNamespaceInclusions": {
+    "type": "array",
+    "metadata": {
+     "displayName": "AKS Clusters Should Not Allow Container Privilege Escalation Policy Namespace Inclusions",
+     "description": null
+    },
+    "defaultValue": []
+   },
+   "aksClustersNoAllowContainerPrivilegeEscalationLabelSelector": {
+    "type": "object",
+    "metadata": {
+     "displayName": "AKS Clusters Should Not Allow Container Privilege Escalation Policy Label Selector",
+     "description": null
+    }
+   },
+   "aksClustersNoAllowContainerPrivilegeEscalationContainersExclusions": {
+    "type": "array",
+    "metadata": {
+     "displayName": "AKS Clusters Should Not Allow Container Privilege Escalation Policy Containers Exclusions",
+     "description": null
+    },
+    "defaultValue": []
+   },
+   "aksClustersNoAllowPrivilegedContainersEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "AKS Clusters Should Not Allow Privileged Containers Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "audit",
+     "deny",
+     "disabled"
+    ],
+    "defaultValue": "audit"
+   },
+   "aksClustersNoAllowPrivilegedContainersNamespaceExclusions": {
+    "type": "array",
+    "metadata": {
+     "displayName": "AKS Clusters Should Not Allow Privileged Containers Policy Namespace Exclusions",
+     "description": null
+    },
+    "defaultValue": [
+     "kube-system",
+     "gatekeeper-system",
+     "azure-arc"
+    ]
+   },
+   "aksClustersNoAllowPrivilegedContainersNamespaceInclusions": {
+    "type": "array",
+    "metadata": {
+     "displayName": "AKS Clusters Should Not Allow Privileged Containers Policy Namespace Inclusions",
+     "description": null
+    },
+    "defaultValue": []
+   },
+   "aksClustersNoAllowPrivilegedContainersLabelSelector": {
+    "type": "object",
+    "metadata": {
+     "displayName": "AKS Clusters Should Not Allow Privileged Containers Policy Label Selector",
+     "description": null
+    },
+    "defaultValue": {}
+   },
+   "aksClustersNoAllowPrivilegedContainersContainersExclusions": {
+    "type": "array",
+    "metadata": {
+     "displayName": "AKS Clusters Should Not Allow Privileged Containers Policy Containers Exclusions",
+     "description": null
+    },
+    "defaultValue": []
+   },
+   "aksUpgradeNonVulnerableVersionEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "AKS Services Should Be Upgraded Non-vulnerable Version Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "Audit",
+     "Disabled"
+    ],
+    "defaultValue": "Audit"
+   },
+   "aksClustersNoAllowContainerPrivilegeEscalationEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "AKS Clusters Should Not Allow Container Privilege Escalation Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "audit",
+     "deny",
+     "disabled"
+    ],
+    "defaultValue": "audit"
+   }
+  },
+  "policyDefinitions": [
+   {
+    "policyDefinitionReferenceId": "Deploy Azure Policy Add-on to Azure Kubernetes Service clusters_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a8eff44f-8c92-45c3-a3fb-9880802d67a7",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('deployAksClustersAzurePolicyAddonEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Kubernetes clusters should use internal load balancers_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/3fc4dc25-5baf-40d8-9b05-7fe74c1bc64e",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('aksClustersIlbEffect')]"
+     },
+     "excludedNamespaces": {
+      "value": "[parameters('aksClustersIlbNamespaceExclusions')]"
+     },
+     "namespaces": {
+      "value": "[parameters('aksClustersIlbNamespaceInclusions')]"
+     },
+     "labelSelector": {
+      "value": "[parameters('aksClustersIlbLabelSelector')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Kubernetes Services should be upgraded to a non-vulnerable Kubernetes version_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/fb893a29-21bb-418c-a157-e99480ec364c",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('aksUpgradeNonVulnerableVersionEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Role-Based Access Control (RBAC) should be used on Kubernetes Services_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ac4a19c2-fa67-49b4-8ae5-0b2e78c49457",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('rbacShouldBeUsedAksEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Kubernetes clusters should not allow container privilege escalation_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1c6e92c9-99f0-4e55-9cf2-0c234dc48f99",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('aksClustersNoAllowContainerPrivilegeEscalationEffect')]"
+     },
+     "excludedNamespaces": {
+      "value": "[parameters('aksClustersNoAllowContainerPrivilegeEscalationNamespaceExclusions')]"
+     },
+     "namespaces": {
+      "value": "[parameters('aksClustersNoAllowContainerPrivilegeEscalationNamespaceInclusions')]"
+     },
+     "labelSelector": {
+      "value": "[parameters('aksClustersNoAllowContainerPrivilegeEscalationLabelSelector')]"
+     },
+     "excludedContainers": {
+      "value": "[parameters('aksClustersNoAllowContainerPrivilegeEscalationContainersExclusions')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Kubernetes cluster should not allow privileged containers_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/95edb821-ddaf-4404-9732-666045e056b4",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('aksClustersNoAllowPrivilegedContainersEffect')]"
+     },
+     "excludedNamespaces": {
+      "value": "[parameters('aksClustersNoAllowPrivilegedContainersNamespaceExclusions')]"
+     },
+     "namespaces": {
+      "value": "[parameters('aksClustersNoAllowPrivilegedContainersNamespaceInclusions')]"
+     },
+     "labelSelector": {
+      "value": "[parameters('aksClustersNoAllowPrivilegedContainersLabelSelector')]"
+     },
+     "excludedContainers": {
+      "value": "[parameters('aksClustersNoAllowPrivilegedContainersContainersExclusions')]"
+     }
+    },
+    "groupNames": []
+   }
+  ],
+  "policyDefinitionGroups": []
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policySetDefinitions/fdd144436f834c56bd07664d",
+ "type": "Microsoft.Authorization/policySetDefinitions",
+ "name": "fdd144436f834c56bd07664d"
+}

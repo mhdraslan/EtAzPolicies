@@ -1,0 +1,113 @@
+{
+ "properties": {
+  "displayName": "Initiative 13: Storage Account Related Configurations",
+  "policyType": "Custom",
+  "description": "",
+  "metadata": {
+   "category": "Storage",
+   "version": "1.0",
+   "createdBy": "cff858ae-b6db-464f-ad88-38527b3fda0f",
+   "createdOn": "2022-01-12T14:27:10.3270434Z",
+   "updatedBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "updatedOn": "2022-01-13T19:08:46.393301Z"
+  },
+  "parameters": {
+   "deployAtpOnStorageAccountsPolicyEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Deploy Advanced Threat Protection on Storage Accounts Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "DeployIfNotExists",
+     "Disabled"
+    ],
+    "defaultValue": "DeployIfNotExists"
+   },
+   "secureTransferToStorageAccountsEnabledPolicyEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Secure Transfer to Storage Accounts Should Be Enabled Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "Audit",
+     "Deny",
+     "Disabled"
+    ],
+    "defaultValue": "Audit"
+   },
+   "storageAccountsAllowAccessFromTrustedMicrosoftServicesPolicyEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Storage Accounts Should Allow Access From Trusted Microsoft Services Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "Audit",
+     "Deny",
+     "Disabled"
+    ],
+    "defaultValue": "Audit"
+   },
+   "storageAccountsUseServiceEndpointPolicyEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Storage Accounts Should Use a Virtual Network Service Endpoint Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "Audit",
+     "Disabled"
+    ],
+    "defaultValue": "Audit"
+   }
+  },
+  "policyDefinitions": [
+   {
+    "policyDefinitionReferenceId": "Deploy Advanced Threat Protection on storage accounts_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/361c2074-3595-4e5d-8cab-4f21dffc835c",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('deployAtpOnStorageAccountsPolicyEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Secure transfer to storage accounts should be enabled_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/404c3081-a854-4457-ae30-26a93ef643f9",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('secureTransferToStorageAccountsEnabledPolicyEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Storage accounts should allow access from trusted Microsoft services_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/c9d007d0-c057-4772-b18c-01e546713bcd",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('storageAccountsAllowAccessFromTrustedMicrosoftServicesPolicyEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Storage Accounts should use a virtual network service endpoint_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/60d21c4f-21a3-4d94-85f4-b924e6aeeda4",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('storageAccountsUseServiceEndpointPolicyEffect')]"
+     }
+    },
+    "groupNames": []
+   }
+  ],
+  "policyDefinitionGroups": []
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policySetDefinitions/402037f62dc64bfd87acf3c8",
+ "type": "Microsoft.Authorization/policySetDefinitions",
+ "name": "402037f62dc64bfd87acf3c8"
+}

@@ -1,0 +1,70 @@
+{
+ "properties": {
+  "displayName": "Initiative 10: Allowed Locations",
+  "policyType": "Custom",
+  "description": "",
+  "metadata": {
+   "category": "Governance",
+   "version": "1.0",
+   "parameterScopes": {
+    "listOfAllowedLocations": "/providers/Microsoft.Management/managementGroups/ESLZ"
+   },
+   "createdBy": "cff858ae-b6db-464f-ad88-38527b3fda0f",
+   "createdOn": "2022-01-12T12:34:29.7680093Z",
+   "updatedBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "updatedOn": "2022-01-13T19:07:12.8575359Z"
+  },
+  "parameters": {
+   "allowedLocations": {
+    "type": "array",
+    "metadata": {
+     "displayName": "Allowed locations",
+     "description": null,
+     "strongType": "location"
+    },
+    "defaultValue": []
+   },
+   "allowedLocationsResourceGroups": {
+    "type": "array",
+    "metadata": {
+     "displayName": "allowedLocationsResourceGroups",
+     "description": null,
+     "strongType": "location"
+    },
+    "defaultValue": []
+   }
+  },
+  "policyDefinitions": [
+   {
+    "policyDefinitionReferenceId": "Allowed locations_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
+    "parameters": {
+     "listOfAllowedLocations": {
+      "value": "[parameters('allowedLocations')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Allowed locations for resource groups_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988",
+    "parameters": {
+     "listOfAllowedLocations": {
+      "value": "[parameters('allowedLocationsResourceGroups')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Audit resource location matches resource group location_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a",
+    "parameters": {},
+    "groupNames": []
+   }
+  ],
+  "policyDefinitionGroups": []
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policySetDefinitions/50d9577301414a1cad347d0e",
+ "type": "Microsoft.Authorization/policySetDefinitions",
+ "name": "50d9577301414a1cad347d0e"
+}

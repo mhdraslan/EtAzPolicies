@@ -1,0 +1,145 @@
+{
+ "properties": {
+  "displayName": "Initiative 14: BCDR Related Configurations",
+  "policyType": "Custom",
+  "description": "",
+  "metadata": {
+   "category": "Operations",
+   "version": "1.0",
+   "createdBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "createdOn": "2022-01-14T05:46:19.6760898Z",
+   "updatedBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "updatedOn": "2022-01-14T05:48:41.4806456Z"
+  },
+  "parameters": {
+   "geoBackupAzureSqlEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Long-term Geo-redundant backup should be enabled for Azure SQL Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "AuditIfNotExists",
+     "Disabled"
+    ],
+    "defaultValue": "AuditIfNotExists"
+   },
+   "geoBackupStorageAccountEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Geo-redundant storage should be enabled for Storage Accounts Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "Audit",
+     "Disabled"
+    ],
+    "defaultValue": "Audit"
+   },
+   "backupVmNoTagToRsvDefaultPolicyExclusionTagName": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Confiure Backup on VMs Without Given Tag Policy Exclusion Tag Name",
+     "description": null
+    }
+   },
+   "backupVmNoTagToRsvDefaultPolicyExclusionTagVaue": {
+    "type": "array",
+    "metadata": {
+     "displayName": "Confiure Backup on VMs Without Given Tag Policy Exclusion Tag Value",
+     "description": null
+    },
+    "defaultValue": []
+   },
+   "backupVmNoTagToRsvDefaultPolicyEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Confiure Backup on VMs Without Given Tag Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "deployIfNotExists",
+     "auditIfNotExists",
+     "disabled"
+    ],
+    "defaultValue": "auditIfNotExists"
+   },
+   "azBackupEnabledForVmEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Azure Backup should be enabled for Virtual Machines Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "AuditIfNotExists",
+     "Disabled"
+    ],
+    "defaultValue": "AuditIfNotExists"
+   }
+  },
+  "policyDefinitions": [
+   {
+    "policyDefinitionReferenceId": "Long-term geo-redundant backup should be enabled for Azure SQL Databases_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/d38fc420-0735-4ef3-ac11-c806f651a570",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('geoBackupAzureSqlEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Geo-redundant storage should be enabled for Storage Accounts_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/bf045164-79ba-4215-8f95-f8048dc1780b",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('geoBackupStorageAccountEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Configure backup on virtual machines without a given tag to a new recovery services vault with a def_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/98d0b9f8-fd90-49c9-88e2-d3baf3b0dd86",
+    "parameters": {
+     "exclusionTagName": {
+      "value": "[parameters('backupVmNoTagToRsvDefaultPolicyExclusionTagName')]"
+     },
+     "exclusionTagValue": {
+      "value": "[parameters('backupVmNoTagToRsvDefaultPolicyExclusionTagVaue')]"
+     },
+     "effect": {
+      "value": "[parameters('backupVmNoTagToRsvDefaultPolicyEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Audit virtual machines without disaster recovery configured_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56",
+    "parameters": {},
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Audit VMs that do not use managed disks_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d",
+    "parameters": {},
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Azure Backup should be enabled for Virtual Machines_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/013e242c-8828-4970-87b3-ab247555486d",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('azBackupEnabledForVmEffect')]"
+     }
+    },
+    "groupNames": []
+   }
+  ],
+  "policyDefinitionGroups": []
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policySetDefinitions/4981c4b97bbb4a9ea62714f0",
+ "type": "Microsoft.Authorization/policySetDefinitions",
+ "name": "4981c4b97bbb4a9ea62714f0"
+}

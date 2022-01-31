@@ -1,0 +1,74 @@
+{
+ "properties": {
+  "displayName": "Initiative 16: Operations Related Configurations",
+  "policyType": "Custom",
+  "description": "",
+  "metadata": {
+   "category": "Operations",
+   "version": "1.0",
+   "parameterScopes": {
+    "logAnalytics": "/providers/Microsoft.Management/managementGroups/ESLZ",
+    "listOfLocations": "/providers/Microsoft.Management/managementGroups/ESLZ",
+    "workspace": "/providers/Microsoft.Management/managementGroups/ESLZ"
+   },
+   "createdBy": "cff858ae-b6db-464f-ad88-38527b3fda0f",
+   "createdOn": "2022-01-12T08:32:24.0401375Z",
+   "updatedBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "updatedOn": "2022-01-17T14:03:02.8182082Z"
+  },
+  "parameters": {
+   "logAnalysticsWorkspace": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Log Analytics workspace for Azure Activity logs",
+     "description": null,
+     "strongType": "Microsoft.OperationalInsights/workspaces"
+    }
+   }
+  },
+  "policyDefinitions": [
+   {
+    "policyDefinitionReferenceId": "Configure Azure Activity logs to stream to specified Log Analytics workspace_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2465583e-4e78-4c15-b6be-a36cbc7c8b0f",
+    "parameters": {
+     "logAnalytics": {
+      "value": "[parameters('logAnalysticsWorkspace')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Network Watcher should be enabled_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b6e2945c-0b7b-40f5-9233-7a5323b5cdc6",
+    "parameters": {
+     "listOfLocations": {
+      "value": [
+       "uaenorth"
+      ]
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Deploys NSG flow logs and traffic analytics to Log Analytics_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policyDefinitions/Deploy-Nsg-FlowLogs-to-LA",
+    "parameters": {
+     "workspace": {
+      "value": "[parameters('logAnalysticsWorkspace')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Apply Lock on Resource Group_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policyDefinitions/a1847193-a8e0-4ab1-aeb3-88cb1f03c2bf",
+    "parameters": {},
+    "groupNames": []
+   }
+  ],
+  "policyDefinitionGroups": []
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policySetDefinitions/39f55ea298e44a1182a30b9c",
+ "type": "Microsoft.Authorization/policySetDefinitions",
+ "name": "39f55ea298e44a1182a30b9c"
+}

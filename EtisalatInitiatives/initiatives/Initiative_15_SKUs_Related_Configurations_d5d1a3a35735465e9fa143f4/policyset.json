@@ -1,0 +1,142 @@
+{
+ "properties": {
+  "displayName": "Initiative 15: SKUs Related Configurations",
+  "policyType": "Custom",
+  "description": "",
+  "metadata": {
+   "category": "Governance",
+   "version": "1.0",
+   "parameterScopes": {
+    "listOfAllowedSKUs": "/providers/Microsoft.Management/managementGroups/ESLZ"
+   },
+   "createdBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "createdOn": "2022-01-14T06:03:06.0617057Z",
+   "updatedBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "updatedOn": "2022-01-17T09:35:16.3235836Z"
+  },
+  "parameters": {
+   "notAllowedResourceTypes": {
+    "type": "array",
+    "metadata": {
+     "displayName": "Not Allowed Resource Types",
+     "description": null,
+     "strongType": "resourceTypes"
+    },
+    "defaultValue": []
+   },
+   "notAllowedResourceTypesEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Not Allowed Resource Types Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "Audit",
+     "Deny",
+     "Disabled"
+    ],
+    "defaultValue": "Audit"
+   },
+   "storageAccountAllowedSkus": {
+    "type": "array",
+    "metadata": {
+     "displayName": "Storage Account Allowed SKUs",
+     "description": null,
+     "strongType": "storageSkus"
+    },
+    "defaultValue": []
+   },
+   "storageAccountAllowedSkusEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Storage Account Allowed SKUs Policy Effects",
+     "description": null
+    },
+    "allowedValues": [
+     "Audit",
+     "Deny",
+     "Disabled"
+    ],
+    "defaultValue": "Audit"
+   },
+   "vmAllowedSkus": {
+    "type": "array",
+    "metadata": {
+     "displayName": "Allowed Virtual Machine Size SKUs",
+     "description": null,
+     "strongType": "vmSKUs"
+    },
+    "defaultValue": []
+   },
+   "erAllowedSkus": {
+    "type": "array",
+    "metadata": {
+     "displayName": "Allowed ExpressRoute Gateway SKUs"
+    },
+    "allowedValues": [
+     "Standard",
+     "HighPerformance",
+     "UltraPerformance",
+     "ErGw1AZ",
+     "ErGw2AZ",
+     "ErGw3AZ"
+    ],
+    "defaultValue": [
+     "Standard"
+    ]
+   }
+  },
+  "policyDefinitions": [
+   {
+    "policyDefinitionReferenceId": "Not allowed resource types_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/6c112d4e-5bc7-47ae-a041-ea2d9dccd749",
+    "parameters": {
+     "listOfResourceTypesNotAllowed": {
+      "value": "[parameters('notAllowedResourceTypes')]"
+     },
+     "effect": {
+      "value": "[parameters('notAllowedResourceTypesEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Storage accounts should be limited by allowed SKUs_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('storageAccountAllowedSkusEffect')]"
+     },
+     "listOfAllowedSKUs": {
+      "value": "[parameters('storageAccountAllowedSkus')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Allowed virtual machine size SKUs_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/cccc23c7-8427-4f53-ad12-b6a63eb452b3",
+    "parameters": {
+     "listOfAllowedSKUs": {
+      "value": "[parameters('vmAllowedSkus')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Allowed ExpressRoute Gateway SKUs_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policyDefinitions/29d740ae-53ff-48a0-9c11-ca734258bea6",
+    "parameters": {
+     "listOfAllowedSKUs": {
+      "value": "[parameters('erAllowedSkus')]"
+     }
+    },
+    "groupNames": []
+   }
+  ],
+  "policyDefinitionGroups": []
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policySetDefinitions/d5d1a3a35735465e9fa143f4",
+ "type": "Microsoft.Authorization/policySetDefinitions",
+ "name": "d5d1a3a35735465e9fa143f4"
+}

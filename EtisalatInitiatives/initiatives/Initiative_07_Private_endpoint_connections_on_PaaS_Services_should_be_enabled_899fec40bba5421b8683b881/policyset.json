@@ -1,0 +1,211 @@
+{
+ "properties": {
+  "displayName": "Initiative 07: Private endpoint connections on PaaS Services should be enabled",
+  "policyType": "Custom",
+  "metadata": {
+   "category": "Securiy",
+   "version": "1.0",
+   "createdBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "createdOn": "2022-01-14T05:26:54.4289566Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {
+   "privEndpointAutomationAccountEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Private Endpoint For Automation Accounts Policy Effect"
+    },
+    "allowedValues": [
+     "AuditIfNotExists",
+     "Disabled"
+    ],
+    "defaultValue": "AuditIfNotExists"
+   },
+   "privEndpointBatchAccountEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Private Endpoint For Batch Accounts Policy Effect"
+    },
+    "allowedValues": [
+     "AuditIfNotExists",
+     "Disabled"
+    ],
+    "defaultValue": "AuditIfNotExists"
+   },
+   "privEndpointAMPLSEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Private Endpoint For Azure Monitor PLS Policy Effect"
+    },
+    "allowedValues": [
+     "AuditIfNotExists",
+     "Disabled"
+    ],
+    "defaultValue": "AuditIfNotExists"
+   },
+   "privEndpointAzureSqlDbEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Private Endpoint For Azure SQL Database Policy Effect"
+    },
+    "allowedValues": [
+     "Audit",
+     "Disabled"
+    ],
+    "defaultValue": "Audit"
+   },
+   "privEndpointIotHubEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Private Endpoint For IoT Hub Policy Effect"
+    },
+    "allowedValues": [
+     "Audit",
+     "Disabled"
+    ],
+    "defaultValue": "Audit"
+   },
+   "privEndpointKeyVaultEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Private Endpoint For Key Vault Policy Effect"
+    },
+    "allowedValues": [
+     "Audit",
+     "Disabled"
+    ],
+    "defaultValue": "Audit"
+   },
+   "privEndpointMariaDbEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Private Endpoint For Maria DB Policy Effect"
+    },
+    "allowedValues": [
+     "AuditIfNotExists",
+     "Disabled"
+    ],
+    "defaultValue": "AuditIfNotExists"
+   },
+   "privEndpointMySqlEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Private Endpoint For MySQL Policy Effect"
+    },
+    "allowedValues": [
+     "AuditIfNotExists",
+     "Disabled"
+    ],
+    "defaultValue": "AuditIfNotExists"
+   },
+   "privEndpointPostgreSqlEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Private Endpoint For PostgreSQL Policy Effect"
+    },
+    "allowedValues": [
+     "AuditIfNotExists",
+     "Disabled"
+    ],
+    "defaultValue": "AuditIfNotExists"
+   }
+  },
+  "policyDefinitions": [
+   {
+    "policyDefinitionReferenceId": "Private endpoint connections on Automation Accounts should be enabled_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0c2b3618-68a8-4034-a150-ff4abc873462",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('privEndpointAutomationAccountEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Private endpoint connections on Batch accounts should be enabled_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/009a0c92-f5b4-4776-9b66-4ed2b4775563",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('privEndpointBatchAccountEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Azure Monitor Private Link Scope should use private link_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0fc55270-f8bf-4feb-b7b8-5e7e7eacc6a6",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('privEndpointAMPLSEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Private endpoint connections on Azure SQL Database should be enabled_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/7698e800-9299-47a6-b3b6-5a0fee576eed",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('privEndpointAzureSqlDbEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Private endpoint should be enabled for IoT Hub_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0d40b058-9f95-4a19-93e3-9b0330baa2a3",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('privEndpointIotHubEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "[Preview]: Private endpoint should be configured for Key Vault_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5f0bc445-3935-4915-9981-011aa2b46147",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('privEndpointKeyVaultEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Private endpoint should be enabled for MariaDB servers_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0a1302fb-a631-4106-9753-f3d494733990",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('privEndpointMariaDbEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Private endpoint should be enabled for MySQL servers_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/7595c971-233d-4bcf-bd18-596129188c49",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('privEndpointMySqlEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Private endpoint should be enabled for PostgreSQL servers_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0564d078-92f5-4f97-8398-b9f58a51f70b",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('privEndpointPostgreSqlEffect')]"
+     }
+    },
+    "groupNames": []
+   }
+  ],
+  "policyDefinitionGroups": []
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policySetDefinitions/899fec40bba5421b8683b881",
+ "type": "Microsoft.Authorization/policySetDefinitions",
+ "name": "899fec40bba5421b8683b881"
+}

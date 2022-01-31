@@ -1,0 +1,63 @@
+{
+ "properties": {
+  "displayName": "Initiative 06: Required Tags on Resource Groups",
+  "policyType": "Custom",
+  "metadata": {
+   "category": "Tags",
+   "version": "1.0",
+   "createdBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "createdOn": "2022-01-14T08:45:25.987077Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {
+   "addReplaceTagResourceGroupsTagName": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Add or replace a tag on resource groups Tag Name"
+    }
+   },
+   "addReplaceTagResourceGroupsTagValue": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Add or replace a tag on resource groups Tag Value"
+    }
+   },
+   "requireTagResourceGroupsTagName": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Require a tag on resource groups Tag Name"
+    }
+   }
+  },
+  "policyDefinitions": [
+   {
+    "policyDefinitionReferenceId": "Add or replace a tag on resource groups_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/d157c373-a6c4-483d-aaad-570756956268",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('addReplaceTagResourceGroupsTagName')]"
+     },
+     "tagValue": {
+      "value": "[parameters('addReplaceTagResourceGroupsTagValue')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Require a tag on resource groups_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('requireTagResourceGroupsTagName')]"
+     }
+    },
+    "groupNames": []
+   }
+  ],
+  "policyDefinitionGroups": []
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policySetDefinitions/53e8d3ccd2574d17b50477c0",
+ "type": "Microsoft.Authorization/policySetDefinitions",
+ "name": "53e8d3ccd2574d17b50477c0"
+}

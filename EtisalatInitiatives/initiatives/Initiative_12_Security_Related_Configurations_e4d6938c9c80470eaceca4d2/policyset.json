@@ -1,0 +1,147 @@
+{
+ "properties": {
+  "displayName": "Initiative 12: Security Related Configurations",
+  "policyType": "Custom",
+  "description": "",
+  "metadata": {
+   "category": "Securiy",
+   "version": "1.0",
+   "parameterScopes": {
+    "fwPolicyRegion": "/providers/Microsoft.Management/managementGroups/ESLZ",
+    "ddosPlan": "/providers/Microsoft.Management/managementGroups/ESLZ"
+   },
+   "createdBy": "cff858ae-b6db-464f-ad88-38527b3fda0f",
+   "createdOn": "2022-01-12T14:10:53.7666236Z",
+   "updatedBy": "4756c0ae-907c-420b-a304-656845fa7be9",
+   "updatedOn": "2022-01-13T19:08:19.9913134Z"
+  },
+  "parameters": {
+   "deployAzFirewallManagerPolicyInSubscriptionPolicyEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Deploy Azure Firewall Manager Policy in the Subscription Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "DeployIfNotExists",
+     "Disabled"
+    ],
+    "defaultValue": "DeployIfNotExists"
+   },
+   "deployAzFirewallManagerPolicyInSubscriptionPolicyRegion": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Deploy Azure Firewall Manager Policy in the Subscription Policy Region",
+     "description": null
+    }
+   },
+   "deployAzFirewallManagerPolicyInSubscriptionPolicyRgName": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Deploy Azure Firewall Manager Policy in the Subscription Policy Resource Group Name",
+     "description": null
+    }
+   },
+   "deployAzFirewallManagerPolicyInSubscriptionPolicyFwPolicy": {
+    "type": "object",
+    "metadata": {
+     "displayName": "Deploy Azure Firewall Manager Policy in the Subscription Policy Firewall Policy",
+     "description": null
+    },
+    "defaultValue": {}
+   },
+   "azMonitorSecurityAuditSolutionMustDeployPolicyEffect": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Azure Monitor Security and Audit Solution Must Be Deployed Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "AuditIfNotExists",
+     "Disabled"
+    ],
+    "defaultValue": "AuditIfNotExists"
+   },
+   "vNetProtectDdosStandardEffet": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Virtual Networks Should Be Protected By Azure DDoS Protection Standard Policy Effect",
+     "description": null
+    },
+    "allowedValues": [
+     "Modify",
+     "Audit",
+     "Disabled"
+    ],
+    "defaultValue": "Audit"
+   },
+   "vNetProtectDdosStandardProtectionPlan": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Virtual Networks Should Be Protected By Azure DDoS Protection Standard Policy Protection Plan",
+     "description": null
+    }
+   }
+  },
+  "policyDefinitions": [
+   {
+    "policyDefinitionReferenceId": "Deploy Azure Firewall Manager policy in the subscription_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policyDefinitions/Deploy-FirewallPolicy",
+    "parameters": {
+     "fwpolicy": {
+      "value": "[parameters('deployAzFirewallManagerPolicyInSubscriptionPolicyFwPolicy')]"
+     },
+     "fwPolicyRegion": {
+      "value": "[parameters('deployAzFirewallManagerPolicyInSubscriptionPolicyRegion')]"
+     },
+     "rgName": {
+      "value": "[parameters('deployAzFirewallManagerPolicyInSubscriptionPolicyRgName')]"
+     },
+     "effect": {
+      "value": "[parameters('deployAzFirewallManagerPolicyInSubscriptionPolicyEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "KeyVault SoftDelete should be enabled_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policyDefinitions/Append-KV-SoftDelete",
+    "parameters": {},
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Azure Monitor solution 'Security and Audit' must be deployed_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/3e596b57-105f-48a6-be97-03e9243bad6e",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('azMonitorSecurityAuditSolutionMustDeployPolicyEffect')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Network interfaces should not have public IPs_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/83a86a26-fd1f-447c-b59d-e51f44264114",
+    "parameters": {},
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Virtual networks should be protected by Azure DDoS Protection Standard_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d",
+    "parameters": {
+     "effect": {
+      "value": "[parameters('vNetProtectDdosStandardEffet')]"
+     },
+     "ddosPlan": {
+      "value": "[parameters('vNetProtectDdosStandardProtectionPlan')]"
+     }
+    },
+    "groupNames": []
+   }
+  ],
+  "policyDefinitionGroups": []
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/ESLZ/providers/Microsoft.Authorization/policySetDefinitions/e4d6938c9c80470eaceca4d2",
+ "type": "Microsoft.Authorization/policySetDefinitions",
+ "name": "e4d6938c9c80470eaceca4d2"
+}

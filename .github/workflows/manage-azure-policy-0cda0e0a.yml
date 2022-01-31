@@ -1,0 +1,62 @@
+name: manage-azure-policy-0cda0e0a
+on:
+  workflow_dispatch:
+    inputs:
+      remarks:
+        description: 'Reason for triggering the workflow run'
+        required: false
+        default: 'Updating Azure Policies'
+
+
+## Uncomment the following if you wish to automatically trigger workflow run with every commit
+#
+#  push:
+#    paths:
+#      - 'EtisalatInitiatives/initiatives/Initiative_16_Operations_Related_Configurations_39f55ea298e44a1182a30b9c/**'
+#      - 'EtisalatInitiatives/initiatives/Initiative_13_Storage_Account_Related_Configurations_402037f62dc64bfd87acf3c8/**'
+#      - 'EtisalatInitiatives/initiatives/Initiative_14_BCDR_Related_Configurations_4981c4b97bbb4a9ea62714f0/**'
+#      - 'EtisalatInitiatives/initiatives/Initiative_10_Allowed_Locations_50d9577301414a1cad347d0e/**'
+#      - 'EtisalatInitiatives/initiatives/Initiative_06_Required_Tags_on_Resource_Groups_53e8d3ccd2574d17b50477c0/**'
+#      - 'EtisalatInitiatives/initiatives/Initiative_08_Enable_Azure_Monitor_for_VMs_583630719c3e4363843f928c/**'
+#      - 'EtisalatInitiatives/initiatives/Initiative_07_Private_endpoint_connections_on_PaaS_Services_should_be_enabled_899fec40bba5421b8683b881/**'
+#      - 'EtisalatInitiatives/initiatives/Initiative_15_SKUs_Related_Configurations_d5d1a3a35735465e9fa143f4/**'
+#      - 'EtisalatInitiatives/initiatives/Initiative_02_Public_network_access_should_be_disabled_for_PaaS_services_Deny-PublicPaaSEndpoints/**'
+#      - 'EtisalatInitiatives/initiatives/Initiative_04_Deploy_Microsoft_Defender_for_Cloud_Configuration_Deploy-ASCDF-Config/**'
+#      - 'EtisalatInitiatives/initiatives/Initiative_03_Deploy_Diagnostic_Settings_to_Azure_PaaS_Services_Deploy-Diagnostics-LogAnalytics/**'
+#      - 'EtisalatInitiatives/initiatives/Initiative_09_Deploy_SQL_Database_built-in_SQL_security_configuration_Deploy-Sql-Security/**'
+#      - 'EtisalatInitiatives/initiatives/Initiative_12_Security_Related_Configurations_e4d6938c9c80470eaceca4d2/**'
+#      - 'EtisalatInitiatives/initiatives/Initiative_01_Deny_or_Deploy_and_append_TLS_requirements_and_SSL_enforcement_on_resources_without_Encryption_in_transit_Enforce-EncryptTransit/**'
+#      - 'EtisalatInitiatives/initiatives/Initiative_05_Inherit_Tags_on_Resources_f9005cea376544dcbea80ff1/**'
+#      - 'EtisalatInitiatives/initiatives/Initiative_11_AKS_Related_Configurations_fdd144436f834c56bd07664d/**'
+#      - .github/workflows/manage-azure-policy-0cda0e0a.yml
+jobs:
+  apply-azure-policy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS_0cda0e0a}}
+        allow-no-subscriptions: true
+    - name: Create or Update Azure Policies
+      uses: azure/manage-azure-policy@v0
+      with:
+        paths: |
+          EtisalatInitiatives/initiatives/Initiative_16_Operations_Related_Configurations_39f55ea298e44a1182a30b9c/**
+          EtisalatInitiatives/initiatives/Initiative_13_Storage_Account_Related_Configurations_402037f62dc64bfd87acf3c8/**
+          EtisalatInitiatives/initiatives/Initiative_14_BCDR_Related_Configurations_4981c4b97bbb4a9ea62714f0/**
+          EtisalatInitiatives/initiatives/Initiative_10_Allowed_Locations_50d9577301414a1cad347d0e/**
+          EtisalatInitiatives/initiatives/Initiative_06_Required_Tags_on_Resource_Groups_53e8d3ccd2574d17b50477c0/**
+          EtisalatInitiatives/initiatives/Initiative_08_Enable_Azure_Monitor_for_VMs_583630719c3e4363843f928c/**
+          EtisalatInitiatives/initiatives/Initiative_07_Private_endpoint_connections_on_PaaS_Services_should_be_enabled_899fec40bba5421b8683b881/**
+          EtisalatInitiatives/initiatives/Initiative_15_SKUs_Related_Configurations_d5d1a3a35735465e9fa143f4/**
+          EtisalatInitiatives/initiatives/Initiative_02_Public_network_access_should_be_disabled_for_PaaS_services_Deny-PublicPaaSEndpoints/**
+          EtisalatInitiatives/initiatives/Initiative_04_Deploy_Microsoft_Defender_for_Cloud_Configuration_Deploy-ASCDF-Config/**
+          EtisalatInitiatives/initiatives/Initiative_03_Deploy_Diagnostic_Settings_to_Azure_PaaS_Services_Deploy-Diagnostics-LogAnalytics/**
+          EtisalatInitiatives/initiatives/Initiative_09_Deploy_SQL_Database_built-in_SQL_security_configuration_Deploy-Sql-Security/**
+          EtisalatInitiatives/initiatives/Initiative_12_Security_Related_Configurations_e4d6938c9c80470eaceca4d2/**
+          EtisalatInitiatives/initiatives/Initiative_01_Deny_or_Deploy_and_append_TLS_requirements_and_SSL_enforcement_on_resources_without_Encryption_in_transit_Enforce-EncryptTransit/**
+          EtisalatInitiatives/initiatives/Initiative_05_Inherit_Tags_on_Resources_f9005cea376544dcbea80ff1/**
+          EtisalatInitiatives/initiatives/Initiative_11_AKS_Related_Configurations_fdd144436f834c56bd07664d/**
