@@ -1,6 +1,6 @@
 $file = Get-Content C:\Temp-Local\Initiative.json
 foreach($line in $file){
-    if($line -match "policyDefinitionId"){
+    if(($line -match "policyDefinitionId") -and ($line -match "/providers/Microsoft.Management/managementGroups/Etisalat")){
         $line = $line.replace("/providers/Microsoft.Management/managementGroups/Etisalat","[concat(`'/providers/Microsoft.Management/managementGroups/`', parameters(`'mgmtGroupId`'),`'")
         $line = $line.Replace("`",","`')]`",")
         $line | Out-File -FilePath "C:\Temp-Local\Initiative2.json" -Append
